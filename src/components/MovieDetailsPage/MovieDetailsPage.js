@@ -6,9 +6,9 @@ export default function MovieDetailsPage() {
     console.log(movieId)
     return (
         <>
-            <h2>Movie</h2>
-             <NavLink
-              exact to="/movies/:movieId/cast"
+            <h2>Movie :{movieId}</h2>
+            
+             <NavLink to="/movies/:movieId/cast"
         className="Navigation_link"
         activeClassName="Active_link"
       >

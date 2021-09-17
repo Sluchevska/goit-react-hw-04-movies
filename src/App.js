@@ -8,21 +8,27 @@ import MovieDetailsPage from './components/MovieDetailsPage/MovieDetailsPage';
 function App() {
   return (
     <div>
-      
       <Navigation />
       <Switch>
-      <Route path="/" exact>
-        <HomePage />
+
+        <Route path="/" exact>
+          <HomePage />
         </Route>
+
+        
+
+        <Route path="/movies" exact>
+          <MoviesPage />
+        </Route>
+
         <Route path="/movies/:movieId">
-          <MovieDetailsPage/>
+          <MovieDetailsPage />
         </Route>
-      <Route path="/movies" exact>
-        <MoviesPage />
-      </Route>
-      <Route>
-        <HomePage />
-      </Route>
+
+        <Route>
+          <HomePage />
+        </Route>
+        
       </Switch>
     </div>
   );
