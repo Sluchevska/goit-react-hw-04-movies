@@ -1,21 +1,26 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router"
-import { NavLink } from "react-router-dom"
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 
 export default function MovieDetailsPage() {
-    const { movieId } = useParams()
-    const [movie, setMovie] = useState(null)
+//   const { movieId } = useParams();
+  const params = useParams();
+  console.log(params);
+  const [movie, setMovie] = useState(null);
 
-    useEffect(() => {
-       MovieApi.fetchMovieById(movieId).then(setMovie) 
-    },[movieId])
-    console.log(movieId)
-    return (
-        <>
-            <h2>Movie :{movieId}</h2>
+//   useEffect(() => {
+//     MovieApi.fetchMovieById(movieId).then(data => {
+//       setMovie(data);
+//     });
+//   }, [movieId]);
+//   console.log(movieId);
+  return (
+    <>
+      {/* <h2>Movie :{movieId}</h2> */}
 
-             <NavLink to="/movies/:movieId/cast"
+      <NavLink
+        to="/movies/:movieId/cast"
         className="Navigation_link"
         activeClassName="Active_link"
       >
@@ -27,7 +32,7 @@ export default function MovieDetailsPage() {
         activeClassName="Active_link"
       >
         Reviews
-      </NavLink> 
-            </>
-    )
+      </NavLink>
+    </>
+  );
 }

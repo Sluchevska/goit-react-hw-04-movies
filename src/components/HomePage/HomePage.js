@@ -24,13 +24,13 @@ export default function HomePage() {
             </Link>
           </li>
         ))}
-          {/* <NavLink
+          <NavLink
               exact to="/movies/:movieId"
         className="Navigation_link"
         activeClassName="Active_link"
       >
         Movie Details
-      </NavLink> */}
+      </NavLink>
     </>
   );
 }
