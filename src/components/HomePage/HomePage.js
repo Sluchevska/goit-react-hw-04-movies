@@ -5,10 +5,15 @@ import * as MovieApi from '../../services/movie-api'
 export default function HomePage() {
     const [movies, setMovies] = useState(null)
     useEffect(() => {
-    MovieApi.fetchPopularMovie().then(setMovies)
+        MovieApi.fetchPopularMovie().then(data => { setMovies(data.results) })
 },[])
 
     return (
-        <h1>Its home page</h1>
+        <>
+            <h1>Popular movies</h1>
+            {movies && movies.map(movie =>
+                <li key={movie.id}>{movie.name }</li>
+            )}
+            </>
     )
 }
