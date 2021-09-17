@@ -7,12 +7,13 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Switch>
+      
       <Navigation />
+      <Switch>
       <Route path="/" exact>
         <HomePage />
       </Route>
-      <Route path="/movies" exact>
+      <Route exact path="/movies">
         <MoviesPage />
       </Route>
       <Route>
