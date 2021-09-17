@@ -17,3 +17,6 @@ export function fetchPopularMovie() {
    
 
 }
+export function fetchMovieById(movieId) {
+   return fetchMovies(`${BASE_URL}/movie/${movieId}?api_key=${Api_key}`) 
+}
