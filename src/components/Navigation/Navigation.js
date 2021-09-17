@@ -1,17 +1,41 @@
-import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
-    return (
-        <nav>
-            <Link to='/'>Home Page</Link>
-            <Link to='/movies'>Movies</Link>
-            <Link to='/movies/:movieId'>Movie Details</Link>
-            <Link to='/movies/:movieId/cast'>Cast</Link>
-            <Link to='/movies/:movieId/reviews'>Reviews</Link>
+  return (
+    <nav>
+      <NavLink exact to="/" className="Navigation_link" activeClassName="Active_link">
+        Home Page
+      </NavLink>
+      <NavLink
+        to="/movies"
+        className="Navigation_link"
+        activeClassName="Active_link"
+      >
+        Movies
+      </NavLink>
+          <NavLink
+              exact to="/movies/:movieId"
+        className="Navigation_link"
+        activeClassName="Active_link"
+      >
+        Movie Details
+      </NavLink>
+          <NavLink
+              exact to="/movies/:movieId/cast"
+        className="Navigation_link"
+        activeClassName="Active_link"
+      >
+        Cast
+      </NavLink>
+      <NavLink
+        to="/movies/:movieId/reviews"
+        className="Navigation_link"
+        activeClassName="Active_link"
+      >
+        Reviews
+      </NavLink>
+    </nav>
+  );
+};
 
-           
-        </nav>
-    )
-}
-
-export default Navigation
+export default Navigation;
