@@ -13,27 +13,14 @@ const Navigation = () => {
       >
         Movies
       </NavLink>
-          <NavLink
+          {/* /* <NavLink
               exact to="/movies/:movieId"
         className="Navigation_link"
         activeClassName="Active_link"
       >
         Movie Details
-      </NavLink>
-          <NavLink
-              exact to="/movies/:movieId/cast"
-        className="Navigation_link"
-        activeClassName="Active_link"
-      >
-        Cast
-      </NavLink>
-      <NavLink
-        to="/movies/:movieId/reviews"
-        className="Navigation_link"
-        activeClassName="Active_link"
-      >
-        Reviews
-      </NavLink>
+      </NavLink> */}
+          
     </nav>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, NavLink, useRouteMatch } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 
 export default function HomePage() {
@@ -19,11 +19,18 @@ export default function HomePage() {
       {movies &&
         movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`${url}${movie.original_title}`}>
+            <Link to={`${url}${movie.id}`}>
               {movie.original_title}
             </Link>
           </li>
         ))}
+          {/* <NavLink
+              exact to="/movies/:movieId"
+        className="Navigation_link"
+        activeClassName="Active_link"
+      >
+        Movie Details
+      </NavLink> */}
     </>
   );
 }
