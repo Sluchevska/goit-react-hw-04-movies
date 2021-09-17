@@ -12,7 +12,7 @@ export default function HomePage() {
         <>
             <h1>Popular movies</h1>
             {movies && movies.map(movie =>
-                <li key={movie.id}>{movie.name }</li>
+                <li key={movie.id}>{movie.original_title }</li>
             )}
             </>
     )
