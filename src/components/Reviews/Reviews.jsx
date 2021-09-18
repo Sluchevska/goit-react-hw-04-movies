@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 
 export default function Reviews({movieId}) {
-  const { url, path } = useRouteMatch();
+ 
   const [reviews, setReviews] = useState(null);
   useEffect(() => {
     MovieApi.fetchMovieReviews(movieId).then(data => {
