@@ -23,13 +23,7 @@ export default function HomePage() {
             <Link to={`${url}movies/${movie.id}`}>{movie.original_title}</Link>
           </li>
         ))}
-      {/* <NavLink
-              exact to="/movies/:movieId"
-        className="Navigation_link"
-        activeClassName="Active_link"
-      >
-        Movie Details
-      </NavLink> */}
+      
     </>
   );
 }
