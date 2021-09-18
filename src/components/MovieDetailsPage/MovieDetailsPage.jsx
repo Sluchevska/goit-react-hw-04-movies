@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
+import PageHeading from '../PageHeading/PageHeading';
 
 export default function MovieDetailsPage() {
-//   const { movieId } = useParams();
-  const params = useParams();
-  console.log(params);
+  const { movieId } = useParams();
+  // const params = useParams();
+  // console.log({params});
   const [movie, setMovie] = useState(null);
 
 //   useEffect(() => {
@@ -17,7 +18,7 @@ export default function MovieDetailsPage() {
 //   console.log(movieId);
   return (
     <>
-      {/* <h2>Movie :{movieId}</h2> */}
+      <PageHeading text={`Movie ${movieId}`}/>
 
       <NavLink
         to="/movies/:movieId/cast"
