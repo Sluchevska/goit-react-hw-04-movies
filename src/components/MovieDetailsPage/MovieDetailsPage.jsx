@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 import Cast from '../Cast/Cast';
 import PageHeading from '../PageHeading/PageHeading';
+import Reviews from '../Reviews/Reviews'
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -54,6 +55,10 @@ export default function MovieDetailsPage() {
       </nav>
       <Route path={`${path}:movieId/cast`} >
          <Cast movieId={movieId}/>
+      </Route>
+      
+    <Route path={`${path}:movieId/reviews`} >
+         <Reviews movieId={movieId}/>
        </Route>
     
      
