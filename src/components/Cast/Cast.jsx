@@ -11,7 +11,7 @@ export default function Cast({movieId}) {
       setCast(data.cast);
     });
   }, [movieId]);
-console.log(cast)
+// console.log(cast)
   return (
     <>
       {cast && (

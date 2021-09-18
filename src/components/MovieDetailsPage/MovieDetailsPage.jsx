@@ -32,28 +32,31 @@ export default function MovieDetailsPage() {
         </>
       )}
 
-      
+      <nav>
+        <h3>Additional information</h3>
       <NavLink
                 to={`${url}/cast`}
                 className="Navigation_link"
                 activeClassName="Active_link"
               >
         Cast
-         <Cast movieId={movieId}/>
         
-      </NavLink>
-      <Route path={`${path}/movieId/cast`} >
-         <Cast movieId={movieId}/>
-       </Route>
-
-    
-      {/* <NavLink
+        
+        </NavLink>
+         <NavLink
         to={`${url}/reviews`}
         className="Navigation_link"
         activeClassName="Active_link"
       >
         Reviews
-      </NavLink> */}
+      </NavLink>
+      
+      </nav>
+      <Route path={`${path}:movieId/cast`} >
+         <Cast movieId={movieId}/>
+       </Route>
+    
+     
     </>
   );
 }
