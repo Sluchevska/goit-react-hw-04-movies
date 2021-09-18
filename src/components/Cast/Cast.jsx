@@ -18,13 +18,15 @@ console.log(cast)
         <ul>
           {cast.map(castItem => (
               <li key={castItem.id}>
-               
+                  <img src={`https://image.tmdb.org/t/p/w500/${castItem.profile_path}`}  alt={castItem.name} height='100px' />
+                  <h3>{castItem.name}</h3>
+                  <p>Character: { castItem.character}</p>
               
             </li>
           ))}
         </ul>
           )}
-          <Route path={`${path}/movieId/cast`}></Route>
+         
       </>
       
   );

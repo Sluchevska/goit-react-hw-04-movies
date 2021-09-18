@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useRouteMatch } from 'react-router';
+import { Route, useParams, useRouteMatch } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 import Cast from '../Cast/Cast';
@@ -24,7 +24,7 @@ export default function MovieDetailsPage() {
       <PageHeading text={`Movie ${movieId}`} />
       {movie && (
         <>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}width='250px' alt={movie.original_title} />
+          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}width='100px' alt={movie.original_title} />
           <h2>{movie.original_title}</h2>
           <p>Score: <span>{movie.vote_average}</span></p>
           <h3>Overview:  </h3><span>{movie.overview}</span>
@@ -32,14 +32,19 @@ export default function MovieDetailsPage() {
         </>
       )}
 
-      <Cast movieId={movieId} />
+      
       <NavLink
                 to={`${url}/cast`}
                 className="Navigation_link"
                 activeClassName="Active_link"
               >
-                Cast
-              </NavLink>
+        Cast
+         <Cast movieId={movieId}/>
+        
+      </NavLink>
+      <Route path={`${path}/movieId/cast`} >
+         <Cast movieId={movieId}/>
+       </Route>
 
     
       {/* <NavLink
