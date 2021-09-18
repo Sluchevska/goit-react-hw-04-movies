@@ -18,9 +18,9 @@ console.log(reviews)
         <ul>
           {reviews.map(review => (
               <li key={review.id}>
-                  {/* <img src={`https://image.tmdb.org/t/p/w500/${castItem.profile_path}`}  alt={castItem.name} height='100px' />
-                  <h3>{castItem.name}</h3>
-                  <p>Character: { castItem.character}</p> */}
+                 
+                  <p>{review.author}</p>
+                  <p>{ review.content}</p>
               
             </li>
           ))}
