@@ -6,9 +6,10 @@ import PageHeading from '../PageHeading/PageHeading';
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
-  // const params = useParams();
-  // console.log({params});
+  const params = useParams();
+  console.log({params});
   const [movie, setMovie] = useState(null);
+  console.log(movie)
 
 //   useEffect(() => {
 //     MovieApi.fetchMovieById(movieId).then(data => {
@@ -18,7 +19,7 @@ export default function MovieDetailsPage() {
 //   console.log(movieId);
   return (
     <>
-      <PageHeading text={`Movie ${movieId}`}/>
+      {/* <PageHeading text={`Movie ${movieId}`}/> */}
 
       <NavLink
         to="/movies/:movieId/cast"
