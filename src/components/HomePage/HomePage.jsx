@@ -17,12 +17,15 @@ export default function HomePage() {
   return (
     <>
       <PageHeading text = "Popular Movies"/>
-      {movies &&
-        movies.map(movie => (
+      {movies &&(
+        <ul>
+        {movies.map(movie => (
           <li key={movie.id}>
             <Link to={`${url}movies/${movie.id}`}>{movie.original_title}</Link>
           </li>
         ))}
+        </ul>)
+      }
       
     </>
   );

@@ -15,10 +15,20 @@ export default function MovieDetailsPage() {
       setMovie(data);
     });
   }, [movieId]);
+  console.log(movie)
   
   return (
     <>
-      <PageHeading text={`Movie ${movieId}`}/>
+      <PageHeading text={`Movie ${movieId}`} />
+      {movie && (
+        <>
+          <img src={movie.poster_path} alt={movie.original_title} />
+          <h2>{movie.original_title}</h2>
+          <p>Score: <span>{movie.vote_average}</span></p>
+          <h3>Overview:  </h3><span>{movie.overview}</span>
+          <h3>Genres: </h3><span>{movie.genres.map(genre => (<li key={genre.id}>{genre.name }</li>))}</span>
+        </>
+      )}
 
       <NavLink
         to="/movies/:movieId/cast"
