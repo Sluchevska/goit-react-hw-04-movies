@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
+
 const Navigation = () => {
   return (
     <nav>
@@ -17,6 +18,7 @@ const Navigation = () => {
         activeClassName="Active_link"
       >
         Movies
+     
       </NavLink>
       
     </nav>
