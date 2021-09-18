@@ -1,7 +1,10 @@
-// import { useEffect, useState } from 'react';
-// import { useRouteMatch } from 'react-router';
+import { useEffect, useState } from 'react';
+import { useRouteMatch } from 'react-router';
 // import { Link } from 'react-router-dom';
-// import * as MovieApi from '../../services/movie-api';
+import * as MovieApi from '../../services/movie-api';
+
+
+
 
 // export default function Movies(searchName) {
 //     const { url } = useRouteMatch();
@@ -34,8 +37,10 @@
 
 export default function SearchBar({ onSearch }){
     const handleSearch = e => {
+        console.log(e.target.elements.searchName.value)
         e.preventDefault();
         onSearch(e.target.elements.searchName.value.toLowerCase())
+        
     }
     return (
         <>
