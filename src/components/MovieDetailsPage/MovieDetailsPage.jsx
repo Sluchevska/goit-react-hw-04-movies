@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouteMatch } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
+import Cast from '../Cast/Cast';
 import PageHeading from '../PageHeading/PageHeading';
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
-  
+  const { url, path } = useRouteMatch();
  
   const [movie, setMovie] = useState(null);
  
@@ -23,7 +24,7 @@ export default function MovieDetailsPage() {
       <PageHeading text={`Movie ${movieId}`} />
       {movie && (
         <>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} />
+          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}width='250px' alt={movie.original_title} />
           <h2>{movie.original_title}</h2>
           <p>Score: <span>{movie.vote_average}</span></p>
           <h3>Overview:  </h3><span>{movie.overview}</span>
@@ -31,20 +32,23 @@ export default function MovieDetailsPage() {
         </>
       )}
 
+      <Cast movieId={movieId} />
       <NavLink
-        to="/movies/:movieId/cast"
-        className="Navigation_link"
-        activeClassName="Active_link"
-      >
-        Cast
-      </NavLink>
-      <NavLink
-        to="/movies/:movieId/reviews"
+                to={`${url}/cast`}
+                className="Navigation_link"
+                activeClassName="Active_link"
+              >
+                Cast
+              </NavLink>
+
+    
+      {/* <NavLink
+        to={`${url}/reviews`}
         className="Navigation_link"
         activeClassName="Active_link"
       >
         Reviews
-      </NavLink>
+      </NavLink> */}
     </>
   );
 }
