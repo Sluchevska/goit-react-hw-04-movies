@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import * as MovieApi from '../../services/movie-api';
-import { Link,useRouteMatch } from 'react-router-dom';
+import { NavLink,useRouteMatch } from 'react-router-dom';
 
 export default function MoviesPage() {
    const { url } = useRouteMatch();
@@ -37,7 +37,7 @@ export default function MoviesPage() {
         <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`${url}movies/${movie.id}`}>{movie.original_title}</Link>
+            <NavLink to={`${url}/${movie.id}`}>{movie.original_title}</NavLink>
           </li>
         ))}
         </ul>)
