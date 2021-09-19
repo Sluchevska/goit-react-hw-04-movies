@@ -20,6 +20,7 @@ export default function MoviesPage() {
   console.log(searchName)
  
   const handleSubmit = searchName => {
+    console.log(searchName)
     setSearchName(searchName)
   }
     
