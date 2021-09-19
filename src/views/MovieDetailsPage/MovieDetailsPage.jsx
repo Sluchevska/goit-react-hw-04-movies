@@ -48,7 +48,7 @@ export default function MovieDetailsPage() {
 
       <nav>
         <h3>Additional information</h3>
-        <Suspense fallback={<Loader />}>
+     
       <NavLink
                 to={{
                 pathname: `${url}/cast`,
@@ -71,8 +71,9 @@ export default function MovieDetailsPage() {
       >
         Reviews
       </NavLink>
-      </Suspense>
+   
       </nav>
+         <Suspense fallback={<Loader />}>
       <Route path={`${path}:movieId/cast`} >
          <Cast movieId={movieId}/>
       </Route>
@@ -80,7 +81,7 @@ export default function MovieDetailsPage() {
     <Route path={`${path}:movieId/reviews`} >
          <Reviews movieId={movieId}/>
        </Route>
-    
+       </Suspense>
      
     </>
   );
