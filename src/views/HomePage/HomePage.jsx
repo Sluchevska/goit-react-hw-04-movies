@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation , useRouteMatch } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
-import PageHeading from '../PageHeading/PageHeading'
+import PageHeading from '../../components/PageHeading/PageHeading'
 
 export default function HomePage() {
   const { url } = useRouteMatch();
@@ -13,7 +13,7 @@ const location = useLocation();
       setMovies(data.results);
     });
   }, []);
-  console.log(movies)
+  // console.log(movies)
 
   return (
     <>

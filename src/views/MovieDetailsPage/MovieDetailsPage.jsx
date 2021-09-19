@@ -4,7 +4,7 @@ import { Route, useParams, useRouteMatch,useLocation,
 import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 import Cast from '../Cast/Cast';
-import PageHeading from '../PageHeading/PageHeading';
+import PageHeading from '../../components/PageHeading/PageHeading';
 import Reviews from '../Reviews/Reviews'
 
 export default function MovieDetailsPage() {

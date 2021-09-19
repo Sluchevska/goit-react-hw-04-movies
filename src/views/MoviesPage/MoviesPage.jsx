@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import * as MovieApi from '../../services/movie-api';
 import {
   NavLink,
@@ -7,7 +7,7 @@ import {
   useHistory,
   useLocation,
 } from 'react-router-dom';
-import LoadMoreBtnClick from '../LoadMoreBtn/LoadMoreBtn';
+import LoadMoreBtnClick from '../../components/LoadMoreBtn/LoadMoreBtn';
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
