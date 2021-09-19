@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Route, useParams, useRouteMatch } from 'react-router';
+import { Route, useParams, useRouteMatch,useLocation,
+  useHistory, } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 import Cast from '../Cast/Cast';
@@ -11,6 +12,8 @@ export default function MovieDetailsPage() {
   const { url, path } = useRouteMatch();
  
   const [movie, setMovie] = useState(null);
+  const location = useLocation();
+  const history = useHistory();
  
 
   useEffect(() => {
@@ -18,13 +21,18 @@ export default function MovieDetailsPage() {
       setMovie(data);
     });
   }, [movieId]);
+  
   // console.log(movie)
+  const goBack = () => {
+    history.push(location?.state?.from?.location ?? '/movies')
+  }
   
   return (
     <>
       <PageHeading text={`Movie ${movieId}`} />
       {movie && (
         <>
+          <button type='button' onClick = {goBack}>Go back</button>
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}width='100px' alt={movie.original_title} />
           <h2>{movie.original_title}</h2>
           <p>Score: <span>{movie.vote_average}</span></p>
@@ -36,7 +44,10 @@ export default function MovieDetailsPage() {
       <nav>
         <h3>Additional information</h3>
       <NavLink
-                to={`${url}/cast`}
+                to={{
+                pathname: `${url}/cast`,
+                state: { from: { location } },
+              }}
                 className="Navigation_link"
                 activeClassName="Active_link"
               >
@@ -45,7 +56,10 @@ export default function MovieDetailsPage() {
         
         </NavLink>
          <NavLink
-        to={`${url}/reviews`}
+        to={{
+                pathname: `${url}/reviews`,
+                state: { from: { location } },
+              }}
         className="Navigation_link"
         activeClassName="Active_link"
       >

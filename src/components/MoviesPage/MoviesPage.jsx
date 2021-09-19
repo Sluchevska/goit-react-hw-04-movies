@@ -1,20 +1,25 @@
 import { useEffect, useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import * as MovieApi from '../../services/movie-api';
-import { NavLink, useRouteMatch } from 'react-router-dom';
+import { NavLink, useRouteMatch,useHistory,
+  useLocation, } from 'react-router-dom';
 import LoadMoreBtnClick from '../LoadMoreBtn/LoadMoreBtn';
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
+  const history = useHistory();
+  const location = useLocation();
 
   const [movies, setMovies] = useState([]);
   const [searchName, setSearchName] = useState('');
   const [page, setPage] = useState(1);
+  const searchQuery = new URLSearchParams(location.search).get('query') ?? '';
+ 
 
   useEffect(() => {
-    if (!searchName) return;
+    if (!searchQuery) return;
 
-    MovieApi.fetchMovieByName(searchName, page).then(data => {
+    MovieApi.fetchMovieByName(searchQuery, page).then(data => {
       setMovies(data.results);
       // setMovies(prevMovies=>[...prevMovies, ...data.results]);
       //   page > 1 &&
@@ -23,13 +28,13 @@ export default function MoviesPage() {
       //         behavior: 'smooth',
       //       });
     });
-  }, [page, searchName]);
+  }, [page, searchQuery]);
 
-  console.log(movies);
+  
 
   const handleSubmit = searchName => {
-    console.log(searchName);
-    setSearchName(searchName);
+       setSearchName(searchName);
+    history.push({ ...location, search: `query=${searchName}` });
   };
 
   const loadMoreBtnClick = () => {
@@ -46,7 +51,10 @@ export default function MoviesPage() {
         <ul>
           {movies.map(movie => (
             <li key={movie.id}>
-              <NavLink to={`${url}/${movie.id}`}>
+              <NavLink to={{
+                  pathname: `${url}/${movie.id}`,
+                  state: { from: { location } },
+                }}>
                 {movie.original_title}
               </NavLink>
             </li>
