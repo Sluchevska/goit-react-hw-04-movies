@@ -13,6 +13,7 @@ export default function HomePage() {
       setMovies(data.results);
     });
   }, []);
+  console.log(movies)
 
   return (
     <>
@@ -21,7 +22,9 @@ export default function HomePage() {
         <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`${url}movies/${movie.id}`}>{movie.original_title}</Link>
+            <Link to={`${url}movies/${movie.id}`}>
+              {movie.name && movie.name}
+              {movie.original_title}</Link>
           </li>
         ))}
         </ul>)
