@@ -10,14 +10,14 @@ export const Ul = styled.ul`
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 gap:15px;
+    padding-inline-start: 0px;
 
 `
 export const MovieItems = styled.li`
 list-style:none;
-box-shadow: 2px 3px 2px 3px rgb(182 183 190);
-margin-left: 10px;
-margin-bottom: 10px;
-text-decoration: none;
+box-shadow: 2px 3px 2px 3px rgb(140 80 151);
+
+border-radius: 5px;
 
 `
 
@@ -27,4 +27,9 @@ display: block;
     height: auto;
     object-fit: contain;
     margin-bottom: 10px;
+`
+
+export const Title = styled.h2`
+text-align: center;
+color: #3d063d;
 `
