@@ -1,17 +1,25 @@
 import { useState } from 'react';
-import { toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 export default function SearchBar({ onSearch }) {
-//   const [searchName, setSearchName] = useState('');
+  const [searchName, setSearchName] = useState('');
 
-    const handleSearch = e => {
-        e.preventDefault();
-        // console.log(e.target.elements.searchName.value)
-    onSearch(e.target.elements.searchName.value.toLowerCase());
+  const handleSearch = e => {
+      setSearchName(e.target.elements.searchName.value) 
+      e.preventDefault();
+      if (searchName.trim() === '') {
+        return toast.error(
+            'The search field is empty!',
+          );
+      }
+    onSearch(searchName.toLowerCase());
+    setSearchName('')
   };
  
   return (
     <>
+  
       <form onSubmit={handleSearch}>
         <input
           name="searchName"

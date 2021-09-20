@@ -7,7 +7,7 @@ import {
   useHistory,
   useLocation,
 } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import LoadMoreBtnClick from '../../components/LoadMoreBtn/LoadMoreBtn';
 
 export default function MoviesPage() {
@@ -24,9 +24,11 @@ export default function MoviesPage() {
     if (!searchQuery) return;
 
     MovieApi.fetchMovieByName(searchQuery, page).then(data => {
-      if (searchQuery.trim() === '' || data.length === 0) {
+      if (data.results.length === 0) {
         return toast.error(
-            `Sorry, but there are no movie with  ${searchQuery}`,
+          `Sorry, but there are no movie with  ${searchQuery}`,
+          setMovies([])
+          
           );
       }
       setMovies(data.results);
@@ -52,6 +54,7 @@ export default function MoviesPage() {
 
   return (
     <>
+      
       <SearchBar onSearch={handleSubmit} />
       <h1>Its movies Page</h1>
       {movies && (

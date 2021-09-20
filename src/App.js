@@ -1,4 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import { lazy, Suspense } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import Loader from './components/Loader/Loader.jsx';
@@ -33,6 +34,7 @@ function App() {
           </Route>
         </Switch>
       </Suspense>
+      <Toaster/>
     </div>
   );
 }
