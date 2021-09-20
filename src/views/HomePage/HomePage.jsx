@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useRouteMatch } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 import PageHeading from '../../components/PageHeading/PageHeading';
-import { Container, MovieItems, Ul } from './HomePage.styled';
+import { Container, MovieItems, Poster, Ul } from './HomePage.styled';
 import DefaultImg from '../../DefaultsImg/PngItem_1503945.png'
 
 export default function HomePage() {
@@ -30,9 +30,9 @@ export default function HomePage() {
                   state: { from: { location } },
                 }}
               >
-                <img src={ movie.poster_path
+                <Poster src={ movie.poster_path
                         ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                        : DefaultImg} alt = {movie.original_title ?? movie.name} width='320px'/>
+                        : DefaultImg} alt = {movie.original_title ?? movie.name}/>
                 <p>{movie.name && movie.name}
                 {movie.original_title}</p>
               </Link>
