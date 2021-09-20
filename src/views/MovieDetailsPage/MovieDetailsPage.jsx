@@ -11,6 +11,7 @@ import * as MovieApi from '../../services/movie-api';
 import Loader from '../../components/Loader/Loader';
 
 import PageHeading from '../../components/PageHeading/PageHeading';
+import DefaultImg from '../../DefaultsImg/PngItem_1503945.png'
 
 const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "cast" */));
 
@@ -46,7 +47,7 @@ export default function MovieDetailsPage() {
             Go back
           </button>
           <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`?? DefaultImg}
             width="100px"
             alt={movie.original_title}
           />

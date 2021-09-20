@@ -18,7 +18,7 @@ export default function SearchBar({ onSearch }) {
           autoComplete="off"
           autoFocus
           placeholder="Enter movie name"
-          //   onChange={handleSearch}
+         
         />
         <button type="submit">
           <span>Search</span>

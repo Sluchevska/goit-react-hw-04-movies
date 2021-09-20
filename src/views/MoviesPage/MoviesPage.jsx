@@ -7,8 +7,9 @@ import {
   useHistory,
   useLocation,
 } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import LoadMoreBtnClick from '../../components/LoadMoreBtn/LoadMoreBtn';
+
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
@@ -35,12 +36,12 @@ export default function MoviesPage() {
         return    setMovies(data.results);
       }
    
-      // setMovies(prevMovies=>[...prevMovies, ...data.results]);
-      //   page > 1 &&
-      //       window.scrollTo({
-      //         top: document.documentElement.scrollHeight,
-      //         behavior: 'smooth',
-      //       });
+      setMovies(prevMovies=>[...prevMovies, ...data.results]);
+        page > 1 &&
+            window.scrollTo({
+              top: document.documentElement.scrollHeight,
+              behavior: 'smooth',
+            });
     });
   }, [page, searchQuery]);
 
