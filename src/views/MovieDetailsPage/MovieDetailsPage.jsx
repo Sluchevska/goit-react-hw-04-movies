@@ -11,7 +11,7 @@ import * as MovieApi from '../../services/movie-api';
 import Loader from '../../components/Loader/Loader';
 
 import PageHeading from '../../components/PageHeading/PageHeading';
-import DefaultImg from '../../DefaultsImg/PngItem_1503945.png';
+import defaultImg from '../../DefaultsImg/PngItem_1503945.png';
 
 const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "cast" */));
 
@@ -37,6 +37,11 @@ export default function MovieDetailsPage() {
   const goBack = () => {
     history.push(location?.state?.from?.location ?? '/movies');
   };
+  const makeImgSrc = (path, defaultImg) => {
+  return movie.poster_path
+    ? `https://image.tmdb.org/t/p/w500/${path}`
+    : defaultImg;
+};
 
   return (
     <>
@@ -47,10 +52,7 @@ export default function MovieDetailsPage() {
             Go back
           </button>
           <img
-            src={
-              `https://image.tmdb.org/t/p/w500${movie.poster_path}` ??
-              DefaultImg
-            }
+            src={makeImgSrc(movie.poster_path, defaultImg)}
             width="100px"
             alt={movie.original_title}
           />
