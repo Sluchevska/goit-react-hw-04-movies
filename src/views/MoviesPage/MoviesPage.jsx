@@ -31,7 +31,10 @@ export default function MoviesPage() {
           
           );
       }
-      setMovies(data.results);
+      if (data.results) {
+        return    setMovies(data.results);
+      }
+   
       // setMovies(prevMovies=>[...prevMovies, ...data.results]);
       //   page > 1 &&
       //       window.scrollTo({
@@ -77,29 +80,3 @@ export default function MoviesPage() {
     </>
   );
 }
-
-// export default function MoviesPage() {
-
-//   const [movies, setMovies] = useState(null);
-
-//   const SearchMovie = (query) => {
-//   useEffect(() => {
-//     // if (!searchName) return
-
-//     MovieApi.fetchMovieByName(query).then(data => {
-//       setMovies(data.results);
-//     });
-//   }, [query]);
-
-//   console.log(movies);
-//   console.log(query)
-
-// }
-
-//   return (
-//     <>
-//       <SearchBar  onSubmit={SearchMovie} />
-//       <h1>Its movies Page</h1>
-//     </>
-//   );
-// }
