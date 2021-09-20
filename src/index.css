@@ -17,10 +17,12 @@ code {
   text-decoration: none;
   padding: 12px;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
   color: #212121;
 }
 
 .Active_link {
   color: blue;
+  font-weight: 700;
+  font-size: 23px;
 }

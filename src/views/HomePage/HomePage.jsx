@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useRouteMatch } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 import PageHeading from '../../components/PageHeading/PageHeading';
+import { Container, MovieItems, Ul } from './HomePage.styled';
+import DefaultImg from '../../DefaultsImg/PngItem_1503945.png'
 
 export default function HomePage() {
   const { url } = useRouteMatch();
@@ -16,25 +18,28 @@ export default function HomePage() {
  
 
   return (
-    <>
+    <Container>
       <PageHeading text="Popular Movies" />
       {movies && (
-        <ul>
+        <Ul>
           {movies.map(movie => (
-            <li key={movie.id}>
+            <MovieItems key={movie.id}>
               <Link
                 to={{
                   pathname: `${url}movies/${movie.id}`,
                   state: { from: { location } },
                 }}
               >
-                {movie.name && movie.name}
-                {movie.original_title}
+                <img src={ movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                        : DefaultImg} alt = {movie.original_title ?? movie.name} width='320px'/>
+                <p>{movie.name && movie.name}
+                {movie.original_title}</p>
               </Link>
-            </li>
+            </MovieItems>
           ))}
-        </ul>
+        </Ul>
       )}
-    </>
+    </Container>
   );
 }
