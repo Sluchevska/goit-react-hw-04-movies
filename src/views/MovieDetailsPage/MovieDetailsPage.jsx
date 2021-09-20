@@ -12,6 +12,7 @@ import Loader from '../../components/Loader/Loader';
 
 import PageHeading from '../../components/PageHeading/PageHeading';
 import defaultImg from '../../DefaultsImg/PngItem_1503945.png';
+import { Container } from './MovieDetailsPage.styled';
 
 const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "cast" */));
 
@@ -44,7 +45,7 @@ export default function MovieDetailsPage() {
 };
 
   return (
-    <>
+    <Container>
       <PageHeading text={`Movie ${movieId}`} />
       {movie && (
         <>
@@ -104,6 +105,6 @@ export default function MovieDetailsPage() {
           <Reviews movieId={movieId} />
         </Route>
       </Suspense>
-    </>
+    </Container>
   );
 }
