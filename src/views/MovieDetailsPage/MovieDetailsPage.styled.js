@@ -1,9 +1,9 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 export const Container = styled.div`
-padding: 15px;
-`
+  padding: 15px;
+`;
 export const Button = styled.button`
-padding: 8px 16px;
+  padding: 8px 16px;
   margin-top: 15px;
   margin-bottom: 40px;
   border-radius: 2px;
@@ -23,22 +23,20 @@ padding: 8px 16px;
   font-weight: 500;
   min-width: 180px;
   box-shadow: 5px 6px 9px rgb(85, 42, 85);
-`
+`;
 export const MovieCard = styled.div`
-display: flex;
-box-shadow: 5px 6px 9px rgb(85, 42, 85);
-margin-bottom: 30px;
-
-`
+  display: flex;
+  box-shadow: 5px 6px 9px rgb(85, 42, 85);
+  margin-bottom: 30px;
+`;
 
 export const MovieInfo = styled.div`
-padding: 10px 25px;
-
-`
+  padding: 10px 25px;
+`;
 export const Poster = styled.img`
-display: block;
-    max-width: 320px;
-    height: auto;
-    object-fit: cover;
-    margin-right:5px;
-`
+  display: block;
+  max-width: 320px;
+  height: auto;
+  object-fit: cover;
+  margin-right: 5px;
+`;

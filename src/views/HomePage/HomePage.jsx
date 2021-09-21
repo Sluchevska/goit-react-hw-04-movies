@@ -3,7 +3,7 @@ import { Link, useLocation, useRouteMatch } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { Container, MovieItems, Poster, Ul, Title } from './HomePage.styled';
-import DefaultImg from '../../DefaultsImg/PngItem_1503945.png'
+import DefaultImg from '../../DefaultsImg/PngItem_1503945.png';
 
 export default function HomePage() {
   const { url } = useRouteMatch();
@@ -15,7 +15,6 @@ export default function HomePage() {
       setMovies(data.results);
     });
   }, []);
- 
 
   return (
     <Container>
@@ -30,13 +29,15 @@ export default function HomePage() {
                   state: { from: { location } },
                 }}
               >
-                <Poster src={
-                         `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                       } alt = {movie.original_title ?? movie.name}/>
-                 </Link>
-                <Title>{movie.name && movie.name}
-                {movie.original_title}</Title>
-             
+                <Poster
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.original_title ?? movie.name}
+                />
+              </Link>
+              <Title>
+                {movie.name && movie.name}
+                {movie.original_title}
+              </Title>
             </MovieItems>
           ))}
         </Ul>
