@@ -12,7 +12,7 @@ import Loader from '../../components/Loader/Loader';
 
 import PageHeading from '../../components/PageHeading/PageHeading';
 import defaultImg from '../../DefaultsImg/PngItem_1503945.png';
-import { Container } from './MovieDetailsPage.styled';
+import { Button, Container, MovieCard, MovieInfo, Poster } from './MovieDetailsPage.styled';
 
 const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "cast" */));
 
@@ -38,26 +38,33 @@ export default function MovieDetailsPage() {
   const goBack = () => {
     history.push(location?.state?.from?.location ?? '/movies');
   };
-  const makeImgSrc = (path, defaultImg) => {
-  return movie.poster_path
-    ? `https://image.tmdb.org/t/p/w500/${path}`
-    : defaultImg;
-};
+//   const makeImgSrc = (path, defaultImg) => {
+//   return movie.poster_path
+//     ? `https://image.tmdb.org/t/p/w500/${path}`
+//     : defaultImg;
+// };
 
   return (
     <Container>
-      <PageHeading text={`Movie ${movieId}`} />
+      {/* <PageHeading text={`Movie ${movieId}`} /> */}
       {movie && (
         <>
-          <button type="button" onClick={goBack}>
+        
+          <Button type="button" onClick={goBack}>
+             
             Go back
-          </button>
-          <img
-            src={makeImgSrc(movie.poster_path, defaultImg)}
-            width="100px"
+          </Button>
+          <MovieCard>
+             
+          <Poster
+            src={
+              `https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            // width="100px"
             alt={movie.original_title}
-          />
-          <h2>{movie.original_title}</h2>
+            />
+            <MovieInfo>
+           <h1>{movie.title}</h1>
+          
           <p>
             Score: <span>{movie.vote_average}</span>
           </p>
@@ -68,19 +75,14 @@ export default function MovieDetailsPage() {
             {movie.genres.map(genre => (
               <li key={genre.id}>{genre.name}</li>
             ))}
-          </span>
-        </>
-      )}
-
-      <nav>
-        <h3>Additional information</h3>
-
-        <NavLink
+              </span>
+              <h3>Additional information:</h3>
+              <NavLink
           to={{
             pathname: `${url}/cast`,
             state: { from: { location } },
           }}
-          className="Navigation_link"
+          className="Additional_info"
           activeClassName="Active_link"
         >
           Cast
@@ -90,12 +92,16 @@ export default function MovieDetailsPage() {
             pathname: `${url}/reviews`,
             state: { from: { location } },
           }}
-          className="Navigation_link"
+          className="Additional_info"
           activeClassName="Active_link"
         >
           Reviews
         </NavLink>
-      </nav>
+            </MovieInfo>
+             </MovieCard>
+        </>
+      )}
+
       <Suspense fallback={<Loader />}>
         <Route path={`${path}:movieId/cast`}>
           <Cast movieId={movieId} />
