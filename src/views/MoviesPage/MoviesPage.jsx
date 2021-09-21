@@ -9,8 +9,13 @@ import {
 } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import LoadMoreBtnClick from '../../components/LoadMoreBtn/LoadMoreBtn';
-import { Container, MovieItems, Poster, Title, Ul } from '../HomePage/HomePage.styled';
-
+import {
+  Container,
+  MovieItems,
+  Poster,
+  Title,
+  Ul,
+} from '../HomePage/HomePage.styled';
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
@@ -29,20 +34,19 @@ export default function MoviesPage() {
       if (data.results.length === 0) {
         return toast.error(
           `Sorry, but there are no movie with  ${searchQuery}`,
-          setMovies([])
-          
-          );
+          setMovies([]),
+        );
       }
       if (data.results) {
-        return    setMovies(data.results);
+        return setMovies(data.results);
       }
-   
-      setMovies(prevMovies=>[...prevMovies, ...data.results]);
-        page > 1 &&
-            window.scrollTo({
-              top: document.documentElement.scrollHeight,
-              behavior: 'smooth',
-            });
+
+      setMovies(prevMovies => [...prevMovies, ...data.results]);
+      page > 1 &&
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: 'smooth',
+        });
     });
   }, [page, searchQuery]);
 
@@ -59,9 +63,8 @@ export default function MoviesPage() {
 
   return (
     <Container>
-      
       <SearchBar onSearch={handleSubmit} />
-           {movies && (
+      {movies && (
         <Ul>
           {movies.map(movie => (
             <MovieItems key={movie.id}>
@@ -71,12 +74,15 @@ export default function MoviesPage() {
                   state: { from: { location } },
                 }}
               >
-                <Poster src={
-                        `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                        } alt = {movie.original_title ?? movie.name}/>
+                <Poster
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.original_title ?? movie.name}
+                />
               </NavLink>
-               <Title>{movie.name && movie.name}
-                {movie.original_title}</Title>
+              <Title>
+                {movie.name && movie.name}
+                {movie.original_title}
+              </Title>
             </MovieItems>
           ))}
         </Ul>
