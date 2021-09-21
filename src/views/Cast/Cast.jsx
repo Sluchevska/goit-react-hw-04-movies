@@ -3,6 +3,7 @@ import { Route, useRouteMatch } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 import defaultImg from '../../DefaultsImg/PngItem_1503945.png';
+import {Container, ActorCard, Img} from './Cast.js'
 
 export default function Cast({movieId}) {
  
@@ -24,20 +25,20 @@ export default function Cast({movieId}) {
       
     <>
       {cast && (
-        <ul>
+        <Container>
           {cast.map(castItem => (
-              <li key={castItem.id}>
+              <ActorCard key={castItem.id}>
                   {/* {castItem.profile_path===null&& <img src = '../../DefaultsImg/PngItem_1503945.png' alt='default img'/>} */}
                   {/* <img src={`https://image.tmdb.org/t/p/w500/${castItem.profile_path}`}  alt={castItem.name} height='100px' /> */}
-              <img src={castItem.profile_path
+              <Img src={castItem.profile_path
                     ? `https://image.tmdb.org/t/p/w300/${castItem.profile_path}`
                     : defaultImg}  alt={castItem.name} height='100px' />    
               <h3>{castItem.name}</h3>
                   <p>Character: { castItem.character}</p>
               
-            </li>
+            </ActorCard>
           ))}
-        </ul>
+        </Container>
           )}
          
       </>
