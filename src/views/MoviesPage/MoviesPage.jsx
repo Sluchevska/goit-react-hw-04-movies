@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import LoadMoreBtnClick from '../../components/LoadMoreBtn/LoadMoreBtn';
+import { Container, MovieItems, Poster, Title, Ul } from '../HomePage/HomePage.styled';
 
 
 export default function MoviesPage() {
@@ -57,27 +58,30 @@ export default function MoviesPage() {
   const showButton = movies.length > 20;
 
   return (
-    <>
+    <Container>
       
       <SearchBar onSearch={handleSubmit} />
-      <h1>Its movies Page</h1>
-      {movies && (
-        <ul>
+           {movies && (
+        <Ul>
           {movies.map(movie => (
-            <li key={movie.id}>
+            <MovieItems key={movie.id}>
               <NavLink
                 to={{
                   pathname: `${url}/${movie.id}`,
                   state: { from: { location } },
                 }}
               >
-                {movie.original_title}
+                <Poster src={
+                        `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                        } alt = {movie.original_title ?? movie.name}/>
               </NavLink>
-            </li>
+               <Title>{movie.name && movie.name}
+                {movie.original_title}</Title>
+            </MovieItems>
           ))}
-        </ul>
+        </Ul>
       )}
       {showButton && <LoadMoreBtnClick onClick={loadMoreBtnClick} />}
-    </>
+    </Container>
   );
 }

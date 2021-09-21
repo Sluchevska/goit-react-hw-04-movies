@@ -30,9 +30,9 @@ export default function HomePage() {
                   state: { from: { location } },
                 }}
               >
-                <Poster src={ movie.poster_path
-                        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                        : DefaultImg} alt = {movie.original_title ?? movie.name}/>
+                <Poster src={
+                         `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                       } alt = {movie.original_title ?? movie.name}/>
                  </Link>
                 <Title>{movie.name && movie.name}
                 {movie.original_title}</Title>
