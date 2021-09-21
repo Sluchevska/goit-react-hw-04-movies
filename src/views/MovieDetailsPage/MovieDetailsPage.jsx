@@ -77,12 +77,13 @@ export default function MovieDetailsPage() {
             ))}
               </span>
               <h3>Additional information:</h3>
+              
               <NavLink
           to={{
             pathname: `${url}/cast`,
             state: { from: { location } },
           }}
-          className="Additional_info"
+          className="Navigation_link Addititonal_info"
           activeClassName="Active_link"
         >
           Cast
@@ -92,7 +93,7 @@ export default function MovieDetailsPage() {
             pathname: `${url}/reviews`,
             state: { from: { location } },
           }}
-          className="Additional_info"
+          className="Navigation_link Addititonal_info"
           activeClassName="Active_link"
         >
           Reviews
