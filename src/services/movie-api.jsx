@@ -10,20 +10,23 @@ async function fetchMovies(url = '', config = {}) {
 }
 
 export function fetchPopularMovie() {
- return fetchMovies(`${BASE_URL}/trending/all/day?api_key=${Api_key}`);
+  return fetchMovies(`${BASE_URL}/trending/all/day?api_key=${Api_key}`);
 }
 export function fetchMovieById(movieId) {
   return fetchMovies(`${BASE_URL}/movie/${movieId}?api_key=${Api_key}`);
 }
 export function fetchCastMovie(movieId) {
-  return fetchMovies(`${BASE_URL}/movie/${movieId}/credits?api_key=${Api_key}&language=en-US`);
+  return fetchMovies(
+    `${BASE_URL}/movie/${movieId}/credits?api_key=${Api_key}&language=en-US`,
+  );
 }
 export function fetchMovieReviews(movieId) {
-  return fetchMovies(`${BASE_URL}/movie/${movieId}/reviews?api_key=${Api_key}&language=en-US&page=1`);
+  return fetchMovies(
+    `${BASE_URL}/movie/${movieId}/reviews?api_key=${Api_key}&language=en-US&page=1`,
+  );
 }
 export function fetchMovieByName(searchName, page) {
-  return fetchMovies(`${BASE_URL}/search/movie?api_key=${Api_key}&page=${page}&query=${searchName}&language=en-US&page=1&include_adult=false`);
+  return fetchMovies(
+    `${BASE_URL}/search/movie?api_key=${Api_key}&page=${page}&query=${searchName}&language=en-US&page=1&include_adult=false`,
+  );
 }
-
-
-

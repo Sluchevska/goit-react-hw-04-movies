@@ -5,13 +5,11 @@ import {
   useRouteMatch,
   useLocation,
   useHistory,
- 
 } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import * as MovieApi from '../../services/movie-api';
 import Loader from '../../components/Loader/Loader';
-
 
 import {
   Button,
@@ -26,7 +24,6 @@ const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "cast" */));
 const Reviews = lazy(() =>
   import('../Reviews/Reviews' /* webpackChunkName: "reviews" */),
 );
-
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -51,9 +48,8 @@ export default function MovieDetailsPage() {
   const goBack = () => {
     history.push(location?.state?.from?.location ?? '/movies');
   };
-    return (
+  return (
     <Container>
-    
       {movie && (
         <>
           <Button type="button" onClick={goBack}>
@@ -105,8 +101,7 @@ export default function MovieDetailsPage() {
         </>
       )}
 
-        <Suspense fallback={<Loader />}>
-      
+      <Suspense fallback={<Loader />}>
         <Route path={`${path}:movieId/cast`}>
           <Cast movieId={movieId} />
         </Route>
@@ -114,7 +109,6 @@ export default function MovieDetailsPage() {
         <Route path={`${path}:movieId/reviews`}>
           <Reviews movieId={movieId} />
         </Route>
-    
       </Suspense>
     </Container>
   );
