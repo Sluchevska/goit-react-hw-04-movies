@@ -5,10 +5,20 @@ import Navigation from '../Navigation/Navigation';
 import Loader from '../Loader/Loader.jsx';
 import { Container } from './App.styled';
 
-const HomePage = lazy(() => import('../../views/HomePage/HomePage.jsx'/* webpackChunkName: "home-page" */));
-const MoviesPage = lazy(() => import('../../views/MoviesPage/MoviesPage.jsx'/* webpackChunkName: "movies-page" */));
+const HomePage = lazy(() =>
+  import(
+    '../../views/HomePage/HomePage.jsx' /* webpackChunkName: "home-page" */
+  ),
+);
+const MoviesPage = lazy(() =>
+  import(
+    '../../views/MoviesPage/MoviesPage.jsx' /* webpackChunkName: "movies-page" */
+  ),
+);
 const MovieDetailsPage = lazy(() =>
-  import('../../views/MovieDetailsPage/MovieDetailsPage.jsx'/* webpackChunkName: "movie-details-page" */),
+  import(
+    '../../views/MovieDetailsPage/MovieDetailsPage.jsx' /* webpackChunkName: "movie-details-page" */
+  ),
 );
 
 function App() {
@@ -35,7 +45,7 @@ function App() {
           </Route>
         </Switch>
       </Suspense>
-      <Toaster/>
+      <Toaster />
     </Container>
   );
 }
