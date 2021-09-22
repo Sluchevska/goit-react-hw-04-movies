@@ -5,7 +5,7 @@ import {
   useRouteMatch,
   useLocation,
   useHistory,
-  Switch,
+ 
 } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import toast from 'react-hot-toast';

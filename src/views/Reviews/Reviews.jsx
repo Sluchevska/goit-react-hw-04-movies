@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Route, useRouteMatch } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
-import { AuthorName, Container } from './Reviews.js'
+import { AuthorName, Container } from './Reviews.styled'
 
 
 export default function Reviews({movieId}) {
@@ -12,12 +12,13 @@ export default function Reviews({movieId}) {
     MovieApi.fetchMovieReviews(movieId).then(data => {
       setReviews(data.results);
     });
+   
   }, [movieId]);
 
   return (
-    <>
+    <Container>
       {reviews && (
-        <Container>
+        <>
           {reviews.map(review => (
               <li key={review.id}>
                  
@@ -27,10 +28,13 @@ export default function Reviews({movieId}) {
               
             </li>
           ))}
-        </Container>
-          )}
+        </>
+      )}
+      {!reviews.length && (
+        <p>No reviews yet</p>
+      )}
          
-      </>
+      </Container>
       
   );
 }

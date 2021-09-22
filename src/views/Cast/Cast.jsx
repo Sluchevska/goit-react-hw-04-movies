@@ -3,9 +3,9 @@ import { Route, useRouteMatch } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 import defaultImg from '../../DefaultsImg/PngItem_1503945.png';
-import { Container, ActorCard, Img } from './Cast.js';
+import { Container, ActorCard, Img } from './Cast.styled';
 
- function Cast({ movieId }) {
+ export default function Cast({ movieId }) {
   const [cast, setCast] = useState(null);
   useEffect(() => {
     MovieApi.fetchCastMovie(movieId).then(data => {
@@ -38,4 +38,4 @@ import { Container, ActorCard, Img } from './Cast.js';
   );
 }
 
-export default Cast
+
