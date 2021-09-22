@@ -4,7 +4,7 @@ import { Link, useLocation, useRouteMatch } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { Container, MovieItems, Poster, Ul, Title } from './HomePage.styled';
-import DefaultImg from '../../DefaultsImg/PngItem_1503945.png';
+
 
 export default function HomePage() {
   const { url } = useRouteMatch();
