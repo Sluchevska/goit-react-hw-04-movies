@@ -9,6 +9,7 @@ export default function Reviews({movieId}) {
   useEffect(() => {
     MovieApi.fetchMovieReviews(movieId).then(data => {
       setReviews(data.results);
+       window.scrollTo({ top: 690, behavior: "smooth" });
     });
    
   }, [movieId]);

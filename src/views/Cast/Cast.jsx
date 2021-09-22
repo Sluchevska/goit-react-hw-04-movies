@@ -8,6 +8,7 @@ import { Container, ActorCard, Img } from './Cast.styled';
   useEffect(() => {
     MovieApi.fetchCastMovie(movieId).then(data => {
       setCast(data.cast);
+      window.scrollTo({ top: 690, behavior: "smooth" });
     });
   }, [movieId]);
 
@@ -21,7 +22,7 @@ import { Container, ActorCard, Img } from './Cast.styled';
                 src={
                   castItem.profile_path
                     ? `https://image.tmdb.org/t/p/w300/${castItem.profile_path}`
-                    : (defaultImg)
+                    : defaultImg
                 }
                 alt={castItem.name}
                 height="100px"
