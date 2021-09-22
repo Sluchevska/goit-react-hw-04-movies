@@ -9,11 +9,14 @@ export default function HomePage() {
   const { url } = useRouteMatch();
   const location = useLocation();
   const [movies, setMovies] = useState(null);
+   const [error, setError] = useState();
 
   useEffect(() => {
     MovieApi.fetchPopularMovie().then(data => {
       setMovies(data.results);
-    });
+    }).catch(error=>{
+      setError('Something went wrong. Try again.');
+    })
   }, []);
 
   return (
