@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Route, useRouteMatch } from 'react-router';
-import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
-import defaultImg from '../../DefaultsImg/PngItem_1503945.png';
+import defaultImg from '../../defaultImg/free-avatars-icons-61.png';
 import { Container, ActorCard, Img } from './Cast.styled';
 
  export default function Cast({ movieId }) {

@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast';
-import { Button, Container } from './SearchBar.styled';
+import { Button, Container, Input } from './SearchBar.styled';
 
 export default function SearchBar({ onSearch }) {
   const handleSearch = e => {
@@ -13,7 +13,7 @@ export default function SearchBar({ onSearch }) {
   return (
     <Container>
       <form onSubmit={handleSearch}>
-        <input
+        <Input
           name="searchName"
           type="text"
           autoComplete="off"
