@@ -7,6 +7,7 @@ import {
   useHistory,
 } from 'react-router';
 import { NavLink } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import * as MovieApi from '../../services/movie-api';
 import Loader from '../../components/Loader/Loader';
 
@@ -28,16 +29,22 @@ export default function MovieDetailsPage() {
   const location = useLocation();
   const history = useHistory();
 
-  useEffect(() => {
-    MovieApi.fetchMovieById(movieId).then(data => {
-      setMovie(data);
-    });
-  }, [movieId]);
-
-  // console.log(movie)
   const goBack = () => {
     history.push(location?.state?.from?.location ?? '/movies');
   };
+
+  useEffect(() => {
+    MovieApi.fetchMovieById(movieId).then(data => {
+       console.log(data)
+      setMovie(data);
+    }).catch(error=>{
+      console.log(error)
+      history.push(location?.state?.from?.location ?? '/movies');
+      toast.error('Sorry this movie not found');
+    });
+  }, [movieId, history, location?.state?.from?.location]);
+
+  
 //   const makeImgSrc = (path, defaultImg) => {
 //   return movie.poster_path
 //     ? `https://image.tmdb.org/t/p/w500/${path}`

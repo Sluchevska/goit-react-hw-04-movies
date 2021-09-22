@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useRouteMatch } from 'react-router-dom';
+
 import * as MovieApi from '../../services/movie-api';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { Container, MovieItems, Poster, Ul, Title } from './HomePage.styled';
@@ -9,15 +10,17 @@ export default function HomePage() {
   const { url } = useRouteMatch();
   const location = useLocation();
   const [movies, setMovies] = useState(null);
-   const [error, setError] = useState();
+  
 
   useEffect(() => {
     MovieApi.fetchPopularMovie().then(data => {
+    
       setMovies(data.results);
     }).catch(error=>{
-      setError('Something went wrong. Try again.');
+      console.log(error)
     })
   }, []);
+  
 
   return (
     <Container>
