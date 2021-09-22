@@ -1,4 +1,5 @@
 import toast from 'react-hot-toast';
+import { Button, Container } from './SearchBar.styled';
 
 export default function SearchBar({ onSearch }) {
   const handleSearch = e => {
@@ -10,7 +11,7 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <>
+    <Container>
       <form onSubmit={handleSearch}>
         <input
           name="searchName"
@@ -20,11 +21,11 @@ export default function SearchBar({ onSearch }) {
           placeholder="Enter movie name"
          
         />
-        <button type="submit">
+        <Button type="submit">
           <span>Search</span>
-        </button>
+        </Button>
       </form>
-    </>
+    </Container>
   );
 }
 
