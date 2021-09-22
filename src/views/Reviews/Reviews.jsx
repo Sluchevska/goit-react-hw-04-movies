@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Route, useRouteMatch } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
-import { AuthorName } from './Reviews.js'
+import { AuthorName, Container } from './Reviews.js'
 
 
 export default function Reviews({movieId}) {
@@ -17,7 +17,7 @@ export default function Reviews({movieId}) {
   return (
     <>
       {reviews && (
-        <ul>
+        <Container>
           {reviews.map(review => (
               <li key={review.id}>
                  
@@ -27,7 +27,7 @@ export default function Reviews({movieId}) {
               
             </li>
           ))}
-        </ul>
+        </Container>
           )}
          
       </>
