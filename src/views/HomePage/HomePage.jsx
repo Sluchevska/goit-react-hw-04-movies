@@ -5,22 +5,20 @@ import * as MovieApi from '../../services/movie-api';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { Container, MovieItems, Poster, Ul, Title } from './HomePage.styled';
 
-
 export default function HomePage() {
   const { url } = useRouteMatch();
   const location = useLocation();
   const [movies, setMovies] = useState(null);
-  
 
   useEffect(() => {
-    MovieApi.fetchPopularMovie().then(data => {
-    
-      setMovies(data.results);
-    }).catch(error=>{
-      console.log(error)
-    })
+    MovieApi.fetchPopularMovie()
+      .then(data => {
+        setMovies(data.results);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }, []);
-  
 
   return (
     <Container>
