@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Route, useRouteMatch } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import * as MovieApi from '../../services/movie-api';
+import { AuthorName } from './Reviews.js'
+
 
 export default function Reviews({movieId}) {
  
@@ -11,7 +13,7 @@ export default function Reviews({movieId}) {
       setReviews(data.results);
     });
   }, [movieId]);
-console.log(reviews)
+
   return (
     <>
       {reviews && (
@@ -19,8 +21,9 @@ console.log(reviews)
           {reviews.map(review => (
               <li key={review.id}>
                  
-                  <p>{review.author}</p>
-                  <p>{ review.content}</p>
+                  <AuthorName>{review.author}</AuthorName>
+              <p>{review.content}</p>
+            
               
             </li>
           ))}
