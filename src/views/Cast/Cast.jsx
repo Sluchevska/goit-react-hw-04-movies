@@ -3,12 +3,12 @@ import * as MovieApi from '../../services/movie-api';
 import defaultImg from '../../defaultImg/free-avatars-icons-61.png';
 import { Container, ActorCard, Img } from './Cast.styled';
 
- export default function Cast({ movieId }) {
+export default function Cast({ movieId }) {
   const [cast, setCast] = useState(null);
   useEffect(() => {
     MovieApi.fetchCastMovie(movieId).then(data => {
       setCast(data.cast);
-      window.scrollTo({ top: 690, behavior: "smooth" });
+      window.scrollTo({ top: 690, behavior: 'smooth' });
     });
   }, [movieId]);
 
@@ -36,5 +36,3 @@ import { Container, ActorCard, Img } from './Cast.styled';
     </>
   );
 }
-
-
