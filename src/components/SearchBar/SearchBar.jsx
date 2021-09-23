@@ -8,6 +8,7 @@ export default function SearchBar({ onSearch }) {
       return toast.error('The search field is empty!');
     }
     onSearch(e.target.elements.searchName.value.toLowerCase());
+    e.target.reset()
   };
 
   return (
