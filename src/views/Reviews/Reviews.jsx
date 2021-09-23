@@ -22,7 +22,7 @@ export default function Reviews({movieId}) {
               <li key={review.id}>
                  
                   <AuthorName>{review.author}</AuthorName>
-              <p>{review.content}</p>
+              <p>"{review.content}"</p>
             
               
             </li>
