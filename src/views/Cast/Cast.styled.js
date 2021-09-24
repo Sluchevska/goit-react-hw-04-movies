@@ -12,6 +12,7 @@ export const ActorCard = styled.li`
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 5px 6px 9px rgb(85, 42, 85);
+  padding: 3px;
 `;
 
 export const Img = styled.img`
