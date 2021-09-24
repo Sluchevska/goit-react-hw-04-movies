@@ -20,3 +20,11 @@ export const Img = styled.img`
   height: auto;
   object-fit: contain;
 `;
+
+export const ActorCharachter = styled.p`
+font-weight:700;
+font-style: italic;
+`
+export const Span = styled.span`
+font-weight: 400;
+`
