@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as MovieApi from '../../services/movie-api';
 import defaultImg from '../../defaultImg/PngItem_1503945.png';
-import { Container, ActorCard, Img, ActorCharachter, Span } from './Cast.styled';
+import { Container, ActorCard, Img, ActorCharachter, Span, NameHolder } from './Cast.styled';
 
 export default function Cast({ movieId }) {
   const [cast, setCast] = useState(null);
@@ -27,8 +27,10 @@ export default function Cast({ movieId }) {
                 alt={castItem.name}
                 height="100px"
               />
+              <NameHolder>
               <h3>{castItem.name}</h3>
               <ActorCharachter>Character: <Span>{castItem.character}</Span></ActorCharachter>
+            </NameHolder>
             </ActorCard>
           ))}
         </Container>
