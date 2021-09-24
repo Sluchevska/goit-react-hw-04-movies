@@ -12,8 +12,6 @@ export const ActorCard = styled.li`
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 5px 6px 9px rgb(85, 42, 85);
-
- 
 `;
 
 export const Img = styled.img`
@@ -24,12 +22,12 @@ export const Img = styled.img`
 `;
 
 export const ActorCharachter = styled.p`
-font-weight:700;
-font-style: italic;
-`
+  font-weight: 700;
+  font-style: italic;
+`;
 export const Span = styled.span`
-font-weight: 400;
-`
+  font-weight: 400;
+`;
 export const NameHolder = styled.div`
- padding: 5px;
-`
+  padding: 0 5px;
+`;
