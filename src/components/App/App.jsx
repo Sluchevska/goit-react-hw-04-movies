@@ -5,7 +5,7 @@ import Navigation from '../Navigation/Navigation';
 import Loader from '../Loader/Loader.jsx';
 import { Container } from './App.styled';
 
-const HomePage = lazy(() =>
+const AsyncHomePage = lazy(() =>
   import(
     '../../views/HomePage/HomePage.jsx' /* webpackChunkName: "home-page" */
   ),
@@ -28,9 +28,8 @@ function App() {
 
       <Suspense fallback={<Loader />}>
         <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
+          <Route path="/" exact component={AsyncHomePage}/>
+          
 
           <Route path="/movies" exact>
             <MoviesPage />
@@ -40,9 +39,9 @@ function App() {
             <MovieDetailsPage />
           </Route>
 
-          <Route>
+          {/* <Route>
             <HomePage />
-          </Route>
+          </Route> */}
         </Switch>
       </Suspense>
       <Toaster />
