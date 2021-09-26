@@ -10,12 +10,12 @@ const AsyncHomePage = lazy(() =>
     '../../views/HomePage/HomePage.jsx' /* webpackChunkName: "home-page" */
   ),
 );
-const MoviesPage = lazy(() =>
+const AsyncMoviesPage = lazy(() =>
   import(
     '../../views/MoviesPage/MoviesPage.jsx' /* webpackChunkName: "movies-page" */
   ),
 );
-const MovieDetailsPage = lazy(() =>
+const AsyncMovieDetailsPage = lazy(() =>
   import(
     '../../views/MovieDetailsPage/MovieDetailsPage.jsx' /* webpackChunkName: "movie-details-page" */
   ),
@@ -28,20 +28,13 @@ function App() {
 
       <Suspense fallback={<Loader />}>
         <Switch>
-          <Route path="/" exact component={AsyncHomePage}/>
-          
+          <Route path="/" exact component={AsyncHomePage} />
 
-          <Route path="/movies" exact>
-            <MoviesPage />
-          </Route>
+          <Route path="/movies" exact component={AsyncMoviesPage} />
 
-          <Route path="/movies/:movieId">
-            <MovieDetailsPage />
-          </Route>
+          <Route path="/movies/:movieId" component={AsyncMovieDetailsPage} />
 
-          {/* <Route>
-            <HomePage />
-          </Route> */}
+          <Route component={AsyncHomePage} />
         </Switch>
       </Suspense>
       <Toaster />
