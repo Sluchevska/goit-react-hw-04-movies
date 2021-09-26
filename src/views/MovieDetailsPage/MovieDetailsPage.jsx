@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect, useState, lazy, Suspense, useRef } from 'react';
 import {
   Route,
   useParams,
@@ -25,10 +25,6 @@ const Reviews = lazy(() =>
   import('../Reviews/Reviews' /* webpackChunkName: "reviews" */),
 );
 
-
-
-
-
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
@@ -37,6 +33,10 @@ export default function MovieDetailsPage() {
   const location = useLocation();
   const history = useHistory();
   const locationFrom = location?.state?.from?.location
+  // const currentLocation = useRef(location.state?.from).current;
+ 
+  // console.log(currentLocation)
+  // console.log(location)
 
   useEffect(() => {
     MovieApi.fetchMovieById(movieId)
@@ -51,7 +51,7 @@ export default function MovieDetailsPage() {
   }, [movieId, history, locationFrom]);
 
   const goBack = () => {
-    history.push(locationFrom ?? '/movies');
+    history.push(locationFrom ?? '/');
   };
   return (
     <Container>
