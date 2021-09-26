@@ -7,7 +7,7 @@ export const Container = styled.div`
 export const Ul = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 25px;
   padding-inline-start: 0px;
 `;
 export const MovieItems = styled.li`
@@ -16,7 +16,7 @@ export const MovieItems = styled.li`
 transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 5px;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.06);
   }
 `;
 
