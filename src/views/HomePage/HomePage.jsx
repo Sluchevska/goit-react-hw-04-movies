@@ -22,8 +22,7 @@ export default function HomePage() {
 
   return (
     <Container>
-      {/* <PageHeading text="Popular Movies" /> */}
-      <PageHeading>Popular Movies</PageHeading>
+       <PageHeading>Popular Movies</PageHeading>
       {movies && (
         <Ul>
           {movies.map(movie => (

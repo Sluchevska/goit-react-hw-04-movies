@@ -29,11 +29,8 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Switch>
           <Route path="/" exact component={AsyncHomePage} />
-
           <Route path="/movies" exact component={AsyncMoviesPage} />
-
           <Route path="/movies/:movieId" component={AsyncMovieDetailsPage} />
-
           <Route component={AsyncHomePage} />
         </Switch>
       </Suspense>
