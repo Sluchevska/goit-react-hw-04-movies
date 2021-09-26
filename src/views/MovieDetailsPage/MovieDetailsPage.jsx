@@ -25,6 +25,10 @@ const Reviews = lazy(() =>
   import('../Reviews/Reviews' /* webpackChunkName: "reviews" */),
 );
 
+
+
+
+
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
@@ -32,6 +36,7 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const location = useLocation();
   const history = useHistory();
+  const locationFrom = location?.state?.from?.location
 
   useEffect(() => {
     MovieApi.fetchMovieById(movieId)
@@ -40,13 +45,13 @@ export default function MovieDetailsPage() {
       })
       .catch(error => {
         console.log(error);
-        history.push(location?.state?.from?.location ?? '/movies');
+        history.push(locationFrom ?? '/movies');
         toast.error('Sorry this movie not found');
       });
-  }, [movieId, history, location?.state?.from?.location]);
+  }, [movieId, history, locationFrom]);
 
   const goBack = () => {
-    history.push(location?.state?.from?.location ?? '/movies');
+    history.push(locationFrom ?? '/movies');
   };
   return (
     <Container>
