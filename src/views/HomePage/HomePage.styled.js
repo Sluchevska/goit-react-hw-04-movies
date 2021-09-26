@@ -32,3 +32,7 @@ export const Title = styled.h2`
   text-align: center;
   color: #3d063d;
 `;
+
+export const PageHeading = styled.h1`
+color: #2d012d;
+`

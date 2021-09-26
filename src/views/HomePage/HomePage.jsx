@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useRouteMatch } from 'react-router-dom';
 
 import * as MovieApi from '../../services/movie-api';
-import PageHeading from '../../components/PageHeading/PageHeading';
-import { Container, MovieItems, Poster, Ul, Title } from './HomePage.styled';
+
+import { Container, MovieItems, Poster, Ul, Title, PageHeading } from './HomePage.styled';
 
 export default function HomePage() {
   const { url } = useRouteMatch();
@@ -22,7 +22,8 @@ export default function HomePage() {
 
   return (
     <Container>
-      <PageHeading text="Popular Movies" />
+      {/* <PageHeading text="Popular Movies" /> */}
+      <PageHeading>Popular Movies</PageHeading>
       {movies && (
         <Ul>
           {movies.map(movie => (
