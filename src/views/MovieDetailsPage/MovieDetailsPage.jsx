@@ -33,9 +33,8 @@ export default function MovieDetailsPage() {
   const location = useLocation();
   const history = useHistory();
   const locationFrom = location?.state?.from?.location
-  // const currentLocation = useRef(location.state?.from).current;
- 
-  // console.log(currentLocation)
+  const currentLocation = location.state?.from?.location
+  console.log(currentLocation)
   // console.log(location)
 
   useEffect(() => {
@@ -51,7 +50,7 @@ export default function MovieDetailsPage() {
   }, [movieId, history, locationFrom]);
 
   const goBack = () => {
-    history.push(locationFrom ?? '/');
+    history.push(currentLocation ?? '/');
   };
   return (
     <Container>
@@ -84,7 +83,7 @@ export default function MovieDetailsPage() {
               <NavLink
                 to={{
                   pathname: `${url}/cast`,
-                  state: { from: { location } },
+                  state: { from: location?.state?.from ?? "/" },
                 }}
                 className="Navigation_link Addititonal_info"
                 activeClassName="Active_link"
@@ -94,7 +93,7 @@ export default function MovieDetailsPage() {
               <NavLink
                 to={{
                   pathname: `${url}/reviews`,
-                  state: { from: { location } },
+                  state: { from: location?.state?.from ?? "/" },
                 }}
                 className="Navigation_link Addititonal_info"
                 activeClassName="Active_link"
@@ -107,11 +106,11 @@ export default function MovieDetailsPage() {
       )}
 
       <Suspense fallback={<Loader />}>
-        <Route path={`${path}:movieId/cast`}>
+        <Route path={`${path}/cast`}>
           <Cast movieId={movieId} />
         </Route>
 
-        <Route path={`${path}:movieId/reviews`}>
+        <Route path={`${path}/reviews`}>
           <Reviews movieId={movieId} />
         </Route>
       </Suspense>
