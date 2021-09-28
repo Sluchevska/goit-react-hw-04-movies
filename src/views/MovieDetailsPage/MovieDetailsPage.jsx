@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense, useRef } from 'react';
+import { useEffect, useState, lazy, Suspense} from 'react';
 import {
   Route,
   useParams,
@@ -32,10 +32,7 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const location = useLocation();
   const history = useHistory();
-  const locationFrom = location?.state?.from?.location
-  const currentLocation = location.state?.from?.location
-  console.log(currentLocation)
-  // console.log(location)
+  const locationFrom = location?.state?.from?.location;
 
   useEffect(() => {
     MovieApi.fetchMovieById(movieId)
@@ -50,7 +47,7 @@ export default function MovieDetailsPage() {
   }, [movieId, history, locationFrom]);
 
   const goBack = () => {
-    history.push(currentLocation ?? '/');
+    history.push(locationFrom ?? '/');
   };
   return (
     <Container>
@@ -83,7 +80,7 @@ export default function MovieDetailsPage() {
               <NavLink
                 to={{
                   pathname: `${url}/cast`,
-                  state: { from: location?.state?.from ?? "/" },
+                  state: { from: location?.state?.from ?? '/' },
                 }}
                 className="Navigation_link Addititonal_info"
                 activeClassName="Active_link"
@@ -93,7 +90,7 @@ export default function MovieDetailsPage() {
               <NavLink
                 to={{
                   pathname: `${url}/reviews`,
-                  state: { from: location?.state?.from ?? "/" },
+                  state: { from: location?.state?.from ?? '/' },
                 }}
                 className="Navigation_link Addititonal_info"
                 activeClassName="Active_link"
