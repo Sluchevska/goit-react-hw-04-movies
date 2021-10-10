@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import {Button} from '../LoadMoreBtn/LoadMoreBtn.js'
-function LoadMoreBtnClick({ onClick }) {
+import { Button } from '../LoadMoreBtn/LoadMoreBtn.styled';
+ function LoadMoreBtnClick({ onClick }) {
   return (
     <div>
-    <Button type="button" onClick={onClick}>
-      Load more
+      <Button type="button" onClick={onClick}>
+        Load more
       </Button>
-      </div>
+    </div>
   );
 }
 

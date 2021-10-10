@@ -55,16 +55,15 @@ export default function MoviesPage() {
   const handleSubmit = searchName => {
     setSearchName(searchName);
     history.push({ ...location, search: `query=${searchName}` });
-    console.log(page);
+    
   };
 
   const loadMoreBtnClick = () => {
     setPage(prevPage => prevPage + 1);
-    console.log(page);
-    console.log(movies);
+   
   };
 
-  const showButton = movies.length > 1;
+  const showButton = movies.length > 20;
 
   return (
     <Container>
