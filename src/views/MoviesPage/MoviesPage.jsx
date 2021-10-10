@@ -53,6 +53,7 @@ export default function MoviesPage() {
   }, [page, searchQuery]);
 
   const handleSubmit = searchName => {
+    setMovies([])
     setSearchName(searchName);
     history.push({ ...location, search: `query=${searchName}` });
     
@@ -63,7 +64,7 @@ export default function MoviesPage() {
    
   };
 
-  const showButton = movies.length > 20;
+  const showButton = movies.length > 19;
 
   return (
     <Container>
