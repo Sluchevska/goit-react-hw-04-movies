@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense} from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import {
   Route,
   useParams,

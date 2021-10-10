@@ -16,6 +16,9 @@ import {
   Title,
   Ul,
 } from '../HomePage/HomePage.styled';
+import slugify from '@sindresorhus/slugify';
+
+const makeSlug = string => slugify(string, { lower: true });
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
@@ -38,10 +41,9 @@ export default function MoviesPage() {
         );
       }
       if (data.results) {
-        return setMovies(data.results);
+        return setMovies(prevMovies => [...prevMovies, ...data.results]);
       }
 
-      setMovies(prevMovies => [...prevMovies, ...data.results]);
       page > 1 &&
         window.scrollTo({
           top: document.documentElement.scrollHeight,
@@ -53,13 +55,16 @@ export default function MoviesPage() {
   const handleSubmit = searchName => {
     setSearchName(searchName);
     history.push({ ...location, search: `query=${searchName}` });
+    console.log(page);
   };
 
   const loadMoreBtnClick = () => {
     setPage(prevPage => prevPage + 1);
+    console.log(page);
+    console.log(movies);
   };
 
-  const showButton = movies.length > 20;
+  const showButton = movies.length > 1;
 
   return (
     <Container>
@@ -70,7 +75,7 @@ export default function MoviesPage() {
             <MovieItems key={movie.id}>
               <NavLink
                 to={{
-                  pathname: `${url}/${movie.id}`,
+                  pathname: `${url}/${makeSlug(`${movie.title} ${movie.id}`)}`,
                   state: { from: { location } },
                 }}
               >

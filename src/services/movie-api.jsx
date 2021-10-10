@@ -10,7 +10,7 @@ async function fetchMovies(url = '', config = {}) {
 }
 
 export function fetchPopularMovie() {
-  return fetchMovies(`${BASE_URL}/trending/all/day?api_key=${Api_key}`);
+  return fetchMovies(`${BASE_URL}/trending/movie/day?api_key=${Api_key}`);
 }
 export function fetchMovieById(movieId) {
   return fetchMovies(`${BASE_URL}/movie/${movieId}?api_key=${Api_key}`);
@@ -27,6 +27,6 @@ export function fetchMovieReviews(movieId) {
 }
 export function fetchMovieByName(searchName, page) {
   return fetchMovies(
-    `${BASE_URL}/search/movie?api_key=${Api_key}&page=${page}&query=${searchName}&language=en-US&page=1&include_adult=false`,
+    `${BASE_URL}/search/movie?api_key=${Api_key}&page=${page}&query=${searchName}&language=en-US&include_adult=false`,
   );
 }
